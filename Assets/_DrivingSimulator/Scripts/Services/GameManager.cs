@@ -14,13 +14,13 @@ namespace DrivingSimulator.Services
         private void Update()
         {
             // Pause / Unpause Game
-            if (Input.GetKeyDown(KeyCode.Escape))
+            //if (Input.GetKeyDown(KeyCode.Escape))
             {
                 TogglePause();
             }
 
             // Restart simulation
-            if (Input.GetKeyDown(KeyCode.T))
+            //if (Input.GetKeyDown(KeyCode.T))
             {
                 RestartSimulation();
             }

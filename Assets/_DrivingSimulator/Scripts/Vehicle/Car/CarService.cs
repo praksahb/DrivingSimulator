@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DrivingSimulator.Services.Vehicles.Car
@@ -7,13 +8,11 @@ namespace DrivingSimulator.Services.Vehicles.Car
         [SerializeField] private CarView carPrefab;
         [SerializeField] private Transform spawnPoint;
 
-        private CarController3D _currentCarController;
-        private CarModel _carModel = new CarModel();
-
+        private CarController3D _currentCarController;  
+        
         protected override void Awake()
         {
             base.Awake();
-
 
         }
 
@@ -22,14 +21,21 @@ namespace DrivingSimulator.Services.Vehicles.Car
             SpawnCar();
         }
 
+
+
+
         public void SpawnCar()
         {
             CarView carGO = Instantiate(carPrefab, spawnPoint.position, spawnPoint.rotation);
-    
             CarModel carModel = new CarModel();
 
             _currentCarController = new CarController3D(carModel, carGO);
+
+            OnVehicleSpawned?.Invoke();
         }
+
+
+        public event Action OnVehicleSpawned;
 
         public CarController3D GetCarController()
         {
