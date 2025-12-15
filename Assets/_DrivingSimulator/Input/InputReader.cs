@@ -19,6 +19,8 @@ public class InputReader : MonoBehaviour, CarInputActions.IDrivingActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        Debug.Log($"Moved: {context}\n Movement: {context.ReadValue<Vector2>()}");
+
         Move = context.ReadValue<Vector2>();
     }
 
